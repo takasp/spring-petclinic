@@ -1,0 +1,18 @@
+#!/bin/sh
+
+if ! (type idea > /dev/null 2>&1); then
+  echo idea command not found.
+  echo Please install IntelliJ IDEA from the JetBrains Toolbox App.
+  exit 0
+fi
+
+CHANGE_FILE_COUNTS=$(git diff --name-only --cached --diff-filter=ACM | wc -l)
+if [ "$CHANGE_FILE_COUNTS" -ge 0 ]; then
+  echo idea format...
+  for FILE in $(git diff --name-only --cached --diff-filter=ACM); do
+    IDEA_PROPERTIES=".idea/codeStyles/format.properties" idea format -s .idea/codeStyles/Project.xml "$FILE"
+    echo "$FILE"
+    git add "$FILE"
+  done
+  echo "✨  Done idea format."
+fi
