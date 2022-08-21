@@ -7,7 +7,11 @@ build/*
 .project
 .factorypath
 .attach_pid*
-.idea
+.idea/*
+!.idea/codeStyles
+.idea/codeStyles/*
+!.idea/codeStyles/codeStyleConfig.xml
+!.idea/codeStyles/Project.xml
 *.iml
 /target
 .sts4-cache/
