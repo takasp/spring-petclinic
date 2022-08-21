@@ -12,6 +12,7 @@ build/*
 .idea/codeStyles/*
 !.idea/codeStyles/codeStyleConfig.xml
 !.idea/codeStyles/Project.xml
+!.idea/codeStyles/format.properties
 *.iml
 /target
 .sts4-cache/
