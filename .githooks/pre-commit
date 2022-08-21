@@ -9,8 +9,8 @@ fi
 CHANGE_FILE_COUNTS=$(git diff --name-only --cached --diff-filter=ACM | wc -l)
 if [ "$CHANGE_FILE_COUNTS" -ge 0 ]; then
   echo idea format...
+  git diff --name-only --cached --diff-filter=ACM | xargs env IDEA_PROPERTIES=".idea/codeStyles/format.properties" idea format -s -d .idea/codeStyles/Project.xml
   for FILE in $(git diff --name-only --cached --diff-filter=ACM); do
-    IDEA_PROPERTIES=".idea/codeStyles/format.properties" idea format -s .idea/codeStyles/Project.xml "$FILE"
     echo "$FILE"
     git add "$FILE"
   done
